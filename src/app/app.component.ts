@@ -23,10 +23,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-   // this.items$ = this.dataService.getMainCombo();
-    this.childItems$ = this.dataService.getSecondaryCombo(1);
-
-    this.dataService.getMainCombo().subscribe(data => this.store.dispatch(new GetMainComboItemsAction(data)));
   }
 
   mainItemChanged(selectedItem: ComboItem): void {

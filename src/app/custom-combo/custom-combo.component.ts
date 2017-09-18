@@ -20,7 +20,7 @@ export class CustomComboComponent implements OnInit {
   ngOnInit() {
   }
 
-   onClick(item): void {
+  onClick(item): void {
     this.selectedItemChange.emit(item);
   }
 
