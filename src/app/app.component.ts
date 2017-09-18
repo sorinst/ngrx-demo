@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   items$: Observable<ComboItem[]>;
   childItems$: Observable<ComboItem[]>;
 
-  constructor(private dataService: FakedataService, private store: Store<AppState>){ //, private store: Store<AppState>
+  constructor(private dataService: FakedataService, private store: Store<AppState>){ 
     store.subscribe(state=>console.log('subscribed to store in app component', state));
   }
 
