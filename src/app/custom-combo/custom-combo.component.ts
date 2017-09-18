@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { ComboItem } from "../services/combo-item";
+import { ComboItem } from '../services/combo-item';
 
 @Component({
   selector: 'app-custom-combo',
@@ -10,11 +10,11 @@ import { ComboItem } from "../services/combo-item";
 export class CustomComboComponent implements OnInit {
 
   @Input() comboItems: ComboItem[];
-  
-  @Output() selectedItemChange :  EventEmitter<any>;
 
-  constructor() { 
-    this.selectedItemChange = new EventEmitter<any>();    
+  @Output() selectedItemChange:  EventEmitter<any>;
+
+  constructor() {
+    this.selectedItemChange = new EventEmitter<any>();
   }
 
   ngOnInit() {
@@ -23,5 +23,5 @@ export class CustomComboComponent implements OnInit {
    onClick(item): void {
     this.selectedItemChange.emit(item);
   }
-  
+
 }
