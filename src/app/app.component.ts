@@ -27,8 +27,7 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new GetMainComboItemsAction());
   }
 
-  mainItemChanged(selectedItem: ComboItem): void {
-    //this.childItems$ = this.dataService.getSecondaryCombo(selectedItem.itemId);
+  mainItemChanged(selectedItem: ComboItem): void {    
     this.store.dispatch(new GetChildComboItemsAction(selectedItem.itemId));
   }
 }
