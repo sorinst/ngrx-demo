@@ -1,16 +1,31 @@
-import { ActionReducer, Action} from '@ngrx/store';
+import { ActionReducer, Action } from '@ngrx/store';
 import { AppState, INITIAL_APP_STATE} from '../store/app.state';
 import { AppData, INITIAL_APP_DATA } from '../store/app.data';
 import { UIState, INITIAL_UI_STATE} from '../store/ui-state';
-import {GetMainComboItemsAction, GET_MAIN_COMBO_ITEMS,
-    MainComboItemSelectedAction, MAIN_COMBO_ITEM_SELECTED } from '../actions/app.actions';
+import { MainComboItemSelectedAction, MAIN_COMBO_ITEM_SELECTED,
+    MAIN_COMBO_ITEMS_LOADED, MainComboItemsLoadedAction,
+    CHILD_COMBO_ITEMS_LOADED, ChildComboItemsLoaded } from '../actions/app.actions';
 
-export function mainStoreReducer (state = INITIAL_APP_STATE, action: Action): AppState {
+
+
+export function appDataReducer (state = INITIAL_APP_DATA, action: Action): AppData {
     console.log('Action came in! ' + action.type);
     switch (action.type) {
-        case GET_MAIN_COMBO_ITEMS: {
-            return handleGetMainComboItems(state, action);
+        case MAIN_COMBO_ITEMS_LOADED: {
+            return handleMainComboItemsLoaded(state, action);
+        }     
+        case CHILD_COMBO_ITEMS_LOADED: {
+            return handleChildComboItemsLoaded(state, action);
+        }        
+        default: {
+            return state;
         }
+    }
+}
+
+export function uiStateReducer (state = INITIAL_UI_STATE, action: Action): UIState {
+    console.log('Action came in! ' + action.type);
+    switch (action.type) {        
         case MAIN_COMBO_ITEM_SELECTED: {
             return handleMainComboItemSelected(state, action);
         }
@@ -20,19 +35,27 @@ export function mainStoreReducer (state = INITIAL_APP_STATE, action: Action): Ap
     }
 }
 
-function handleGetMainComboItems(state: AppState, action: GetMainComboItemsAction): AppState {
+function handleMainComboItemsLoaded(state: AppData, action: MainComboItemsLoadedAction): AppData {
     console.log( action.type + ' action being handled!');
     console.log(action);
     const newState = Object.assign({}, state);
-    newState.appData.mainComboItems = action.payload;
+    newState.mainComboItems = action.payload;
+    return newState;
+}
+
+function handleChildComboItemsLoaded(state: AppData, action: ChildComboItemsLoaded): AppData {
+    console.log( action.type + ' action being handled!');
+    console.log(action);
+    const newState = Object.assign({}, state);
+    newState.childComboItems = action.payload;
     return newState;
 }
 
 
-function handleMainComboItemSelected(state: AppState, action: MainComboItemSelectedAction): AppState {
+function handleMainComboItemSelected(state: UIState, action: MainComboItemSelectedAction): UIState {
     console.log( action.type + ' action being handled!');
     console.log(action);
     const newState = Object.assign({}, state);
-    newState.uiState.mainComboSelectedItemId = action.payload;
+    newState.mainComboSelectedItemId = action.payload;
     return newState;
 }

@@ -7,7 +7,7 @@ import {FakedataService} from './services/fakedata.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AppState, INITIAL_APP_STATE } from './store/app.state';
-import { mainStoreReducer } from './reducers/app.reducers';
+import { reducers } from './reducers';
 import { ComboEffectsService } from './effects/app.effects';
 
 
@@ -19,7 +19,7 @@ import { ComboEffectsService } from './effects/app.effects';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot(mainStoreReducer),
+    StoreModule.forRoot(reducers),
     EffectsModule.forRoot([ComboEffectsService])
   ],
   providers: [FakedataService],
