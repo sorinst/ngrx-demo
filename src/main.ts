@@ -11,21 +11,21 @@ import {Observable} from 'rxjs';
 
 const debuggerOn = true;
 
-Observable.prototype.debug = function(message:string) {
+Observable.prototype.debug = function(message: string) {
     return this.do(
         nextValue => {
             if (debuggerOn) {
-                console.log(message, nextValue)
+                console.log(message, nextValue);
             }
         },
         error => {
             if (debuggerOn) {
-                console.error(message, error)
+                console.error(message, error);
             }
         },
         () => {
             if (debuggerOn) {
-                console.error("Observable completed - ", message)
+                console.error('Observable completed - ', message);
             }
         }
     );
