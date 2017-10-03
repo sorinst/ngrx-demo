@@ -9,7 +9,7 @@ export class FakedataService {
 
   constructor() { }
 
-  getMainCombo(): Observable<ComboItem[]> {  
+  getMainCombo(): Observable<ComboItem[]> {
     return Observable.of(this._createComboItemArray(null, "item "));
   }
 
@@ -20,8 +20,9 @@ export class FakedataService {
   private _createComboItemArray(parentId: number, text: string): ComboItem[] {
     let items: ComboItem[] = new Array<ComboItem>();
 
-    for (let i=0;i<10;i++)
-      items.push(new ComboItem(i+1, text + (i+1).toString(), parentId ));
-    return items;    
+    for (let i = 0; i < 10; i++){
+      items.push(new ComboItem(i + 1, text + (i + 1).toString(), parentId ));
+    }
+    return items;
   }
 }
