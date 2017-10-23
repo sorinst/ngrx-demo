@@ -1,9 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div style="text-align:center" class="container">
   <div class="row">
     <div class="col-md-6"><app-custom-combo [comboItems]="items$|async" (selectedItemChange)="mainItemChanged($event)"></app-custom-combo></div>
     <div class="col-md-6"><app-custom-combo [comboItems]="childItems$|async"></app-custom-combo></div>
   </div>
+  <div class="row"><button class="btn btn-primary" (click)="getNumbers()">Get numbers</button></div>
+  <div class="row">
+    <ul>
+      <li *ngFor="let n of numbers">{{n}}</li>
+    </ul>
+  </div>
 </div>
+
 
 

@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   items$: Observable<ComboItem[]>;
   childItems$: Observable<ComboItem[]>;
 
+  numbers: number[];
+
   constructor(private dataService: FakedataService){
     
   }
@@ -26,5 +28,9 @@ export class AppComponent implements OnInit {
 
   mainItemChanged(selectedItem: ComboItem): void {
     this.childItems$ = this.dataService.getSecondaryCombo(selectedItem.itemId);
+  }
+
+  getNumbers(): void{
+    this.dataService.getTestArray().subscribe(data=> this.numbers = data);
   }
 }

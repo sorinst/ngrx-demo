@@ -7,6 +7,8 @@ import 'rxjs/add/observable/of';
 @Injectable()
 export class FakedataService {
 
+  testArray = [];
+
   constructor() { }
 
   getMainCombo(): Observable<ComboItem[]> {  
@@ -15,6 +17,17 @@ export class FakedataService {
 
   getSecondaryCombo(parentId: number): Observable<ComboItem[]> {
     return  Observable.of(this._createComboItemArray(parentId, "child of " + parentId.toString() + " - "));
+  }
+
+  getTestArray(): Observable<number[]> {
+
+    this.testArray = [];
+
+    for(let i=0;i<10;i++){
+      this.testArray.push( Math.round( Math.random()*10));
+    }
+
+    return Observable.of(this.testArray);
   }
 
   private _createComboItemArray(parentId: number, text: string): ComboItem[] {
